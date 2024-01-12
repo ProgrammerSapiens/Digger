@@ -43,7 +43,7 @@ namespace Digger
             if (playerX > x && WalkAbility(x + 1, y)) { creatureCommand.DeltaX = +1; }
             return creatureCommand;
         }
-        private (int, int) WhereIsThePlayer()                           //Обнаружение координат игрока
+        private (int, int) WhereIsThePlayer()                                       //Detecting player coordinates
         {
             int playerX = 0;
             int playerY = 0;
@@ -73,7 +73,7 @@ namespace Digger
         }
         public bool DeadInConflict(ICreature conflictedObject)
         {
-            if (conflictedObject is Sack || conflictedObject is Monster) return true;                       //При контакте с мешком или монстром уничтожается
+            if (conflictedObject is Sack || conflictedObject is Monster) return true;                       //Upon contact with a bag or a monster, it is destroyed
             return false;
         }
         public int GetDrawingPriority() => 0;
@@ -92,7 +92,7 @@ namespace Digger
         public CreatureCommand Act(int x, int y)
         {
             int mapHeight = Game.MapHeight;
-            if (y + 1 < mapHeight)                                      //Пока мешок не достигнет нижней границы
+            if (y + 1 < mapHeight)                                      //Until the bag reaches the lower limit
             {
                 var whatIsBelow = Game.Map[x, y + 1];
                 if (whatIsBelow == null || (count >= 1 && (whatIsBelow is Player) || (whatIsBelow is Monster)))
